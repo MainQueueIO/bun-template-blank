@@ -1,0 +1,44 @@
+
+name: "[Release] Release"
+on: 
+  workflow_dispatch:
+    inputs:
+      deploy_to_npm:
+        type: boolean
+        description: If build should be deployed to NPM, assumes that you have everything setup on the repo cinfiguration.
+        required: true
+        default: false
+
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v4.2.2
+
+    - name: Initialize Git user
+      run: |
+        git config --global user.email "bot@mainqueue.io"
+        git config --global user.name "MainQueue.io Bot"
+
+    - name: Setup Bun
+      uses: oven-sh/setup-bun@v2
+      with:
+        bun-version-file: ".bun-version"
+
+    - name: Install the dependancies
+      run: bun install
+    
+    - name: Initialise the NPM config
+      if: ${{ inputs.deploy_to_npm == 'true' }}
+      run: npm config set //registry.npmjs.org/:_authToken $NPM_TOKEN
+      env:
+        NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    
+    - name: Create Release
+      run: bun release:ci
+      env:
+        # TODO: (diegocuehdz) Need to change secrets.GITHUB_TOKEN to secrets.NPM_TOKEN if you decide to deploy to NPM registry
+        NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

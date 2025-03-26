@@ -1,0 +1,31 @@
+name: "[PR] Test Code"
+on:
+  pull_request:
+    types:
+      - opened
+      - edited
+      - synchronize
+      - reopened
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v4
+
+    - name: Initialize Git user
+      run: |
+        git config --global user.email "bot@mainqueue.io"
+        git config --global user.name "MainQueue.io Bot"
+
+    - name: Setup Bun
+      uses: oven-sh/setup-bun@v2
+      with:
+        bun-version-file: ".bun-version"
+
+    - name: Install the dependencies
+      run: bun install
+
+    - name: Run tests
+      run: bun test
