@@ -5,6 +5,7 @@
     "description": "Blank ",
     "private": true,
     "license": "MIT",
+    "packageManager": "bun@1.2.5",
     "scripts": {
         "husky:prepare": "is-ci || husky",
         "lint": "bun test",
