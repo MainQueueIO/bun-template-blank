@@ -1,26 +1,17 @@
 # bun-template-blank
 
-To install dependencies:
+This is a bun blank template with some of the most useful things to get me started. This template includes the following:
 
-```bash
-bun install
-```
+- Github Actions to run linting, tests, releases, etc on CI
+- Setup of Bun tests, can be switched to vitest or jest by adding configuration files later
+- Husky to maintain local enforcment of fules (removable through package.json scripts)
+- Brewfile to add bun to a machine if not present yet
+- Basic typescript setup through tsconfig.json
 
-To run:
+## [Github Actions](./wiki/GHActions.md)
 
-```bash
-bun run index.ts
-```
+## [Husky Configs](./wiki/Husky.md)
 
-This project was created using `bun init` in bun v1.2.5. [Bun](https://bun.sh) is a fast all-in-one JavaScript runtime.
+## [Brewfile](./wiki/Brewfiles.md)
 
-## Documentation
-
-- [Bun Docs](https://bun.sh/docs)
-
-## Notes
-- [Modify Labels at organization label](https://docs.github.com/en/organizations/managing-organization-settings/managing-default-labels-for-repositories-in-your-organization)
-
-## Ideas
-- [Labeler GH Issues](https://github.com/actions/labeler)
-- [Example of contributing, label and CONTRIBUTE.md](https://github.com/github/docs/contribute)
+## [Roadmap](./wiki/Roadmap.md)
