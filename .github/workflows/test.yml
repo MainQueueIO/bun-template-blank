@@ -8,7 +8,8 @@ on:
       - reopened
 
 jobs:
-  release:
+  test:
+    name: Run test suite
     runs-on: ubuntu-latest
     steps:
     - name: Checkout Repository
