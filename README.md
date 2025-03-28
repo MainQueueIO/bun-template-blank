@@ -8,6 +8,8 @@ This is a bun blank template with some of the most useful things to get me start
 - Brewfile to add bun to a machine if not present yet
 - Basic typescript setup through tsconfig.json
 
+## [Notes and references](./wiki/References.md)
+
 ## [Github Actions](./wiki/GHActions.md)
 
 ## [Husky Configs](./wiki/Husky.md)
