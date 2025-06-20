@@ -1,18 +1,19 @@
 {
+	"$schema": "https://unpkg.com/release-it@18/schema/release-it.json",
 	"git": {
 		"commitMessage": "chore: release v${version}",
-        "requireBranch": "main"
+		"requireBranch": "main"
 	},
 	"github": {
 		"release": true,
 		"releaseName": "v${version}",
-		"autoGenerate": true, 
+		"autoGenerate": true,
 		"tokenRef": "GITHUB_TOKEN",
 		"comments": {
-      		"submit": true,
-      		"issue": ":rocket: _This issue has been resolved in version ${version}. See [${releaseName}](${releaseUrl}) for release notes._",
-      		"pr": ":rocket: _This pull request is included in version ${version}. See [${releaseName}](${releaseUrl}) for release notes._"
-    	}
+			"submit": true,
+			"issue": ":rocket: _This issue has been resolved in version ${version}. See [${releaseName}](${releaseUrl}) for release notes._",
+			"pr": ":rocket: _This pull request is included in version ${version}. See [${releaseName}](${releaseUrl}) for release notes._"
+		}
 	},
 	"npm": {
 		"publish": false

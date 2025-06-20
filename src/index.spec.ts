@@ -1,32 +1,35 @@
-import { describe, expect, it, test } from "bun:test";
+import { describe, expect, it, test } from 'bun:test';
 
-import { helloBlankTemplate } from './index'
+import { helloBlankTemplate } from './index';
 
-describe("index.ts test cases", () => {
-  test("no param is passed", () => {
-      const msg = helloBlankTemplate();
-      expect(2 + 2).toBe(4);
+describe('index.ts test cases', () => {
+  test('no param is passed', () => {
+    const msg = helloBlankTemplate();
+    expect(msg).toBe('hello @anonymous!');
   });
 
   it.each([
     {
-        name: "Main",
-        expected: "hello main!"
+      expected: 'hello main!',
+      name: 'Main',
     },
     {
-        name: "Queue",
-        expected: "hello queue!"
+      expected: 'hello queue!',
+      name: 'Queue',
     },
     {
-        name: "MainQueue",
-        expected: "hello mainqueue!"
+      expected: 'hello mainqueue!',
+      name: 'MainQueue',
     },
     {
-        name: "anonymous",
-        expected: "hello anonymous!"
-    }
-  ])("should return the appropriate welcome message for %p ", ({ name, expected }) => {
-    const msg = helloBlankTemplate(name);
-    expect(msg).toBe(expected);
-  });
+      expected: 'hello anonymous!',
+      name: 'anonymous',
+    },
+  ])(
+    'should return the appropriate welcome message for %p ',
+    ({ expected, name }) => {
+      const msg = helloBlankTemplate(name);
+      expect(msg).toBe(expected);
+    },
+  );
 });
