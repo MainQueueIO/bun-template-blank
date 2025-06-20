@@ -25,8 +25,11 @@ describe('index.ts test cases', () => {
       name: 'anonymous',
       expected: 'hello anonymous!',
     },
-  ])('should return the appropriate welcome message for %p ', ({ name, expected }) => {
-    const msg = helloBlankTemplate(name);
-    expect(msg).toBe(expected);
-  });
+  ])(
+    'should return the appropriate welcome message for %p ',
+    ({ name, expected }) => {
+      const msg = helloBlankTemplate(name);
+      expect(msg).toBe(expected);
+    },
+  );
 });
