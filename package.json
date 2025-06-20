@@ -1,33 +1,46 @@
 {
-    "name": "bun-template-blank",
-    "version": "0.0.0",
-    "author": "diegocuehdz",
-    "description": "Blank ",
-    "private": true,
-    "license": "MIT",
-    "packageManager": "bun@1.2.5",
-    "scripts": {
-        "husky:prepare": "is-ci || husky",
-        "lint": "bun test",
-        "test": "echo 'test is supported by bun, please run $bun test'",
-        "test:watch": "echo 'test & watch for changes is supported by bun, please run $bun test --watch'",
-        "test:coverage": "echo 'test with coverage is supported by bun, please run $bun test --coverage'",
-        "release:ci": "release-it --ci",
-        "release:local": "release-it"
-    },
-    "devDependencies": {
-        "@commitlint/cli": "^19.8.0",
-        "@commitlint/config-conventional": "^19.8.0",
-        "@release-it/conventional-changelog": "^10.0.0",
-        "@types/bun": "latest",
-        "husky": "^9.1.7",
-        "is-ci": "^4.1.0",
-        "release-it": "^18.1.2"
-    },
-    "peerDependencies": {
-        "typescript": "^5"
-    },
-    "overrides": {
-        "conventional-changelog-conventionalcommits": "8.0.0"
-    }
+  "name": "@mainqueue/bun-template-blank",
+  "version": "0.0.0",
+  "author": "diegocuehdz",
+  "description": "Blank ",
+  "private": true,
+  "license": "MIT",
+  "packageManager": "bun@1.2.16",
+  "homepage": "https://github.com/MainQueueIO/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MainQueueIO/bun-template-blank.git"
+  },
+  "scripts": {
+    "husky:prepare": "is-ci || husky",
+    "lint": "concurrently --kill-others-on-fail \"bun run lint:oxlinter\" \"bun run lint:tsc\" \"bun run lint:eslinter\" \"bun run lint:format\"",
+    "lint:tsc": "bun --bun tsc --noEmit",
+    "lint:format": "bun --bun prettier -c \"**/{*.ts,*.tsx}\"",
+    "lint:format:fix": "bun lint:format -- --write",
+    "lint:eslinter": "eslint src --max-warnings 0",
+    "lint:eslinter:fix": "bun lint:eslinter -- --fix",
+    "lint:oxlinter": "oxlint . --deny-warnings",
+    "test": "echo 'test is supported by bun, please run $bun test'",
+    "test:watch": "echo 'test & watch for changes is supported by bun, please run $bun test --watch'",
+    "test:coverage": "echo 'test with coverage is supported by bun, please run $bun test --coverage'",
+    "release:ci": "release-it --ci",
+    "release:local": "release-it"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^19.8.0",
+    "@commitlint/config-conventional": "^19.8.0",
+    "@mainqueueio/eslint-config": "^0.1.2",
+    "@release-it/conventional-changelog": "^10.0.0",
+    "@types/bun": "latest",
+    "concurrently": "^9.1.2",
+    "husky": "^9.1.7",
+    "is-ci": "^4.1.0",
+    "release-it": "^18.1.2"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "overrides": {
+    "conventional-changelog-conventionalcommits": "8.0.0"
+  }
 }
