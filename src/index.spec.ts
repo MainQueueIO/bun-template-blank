@@ -10,24 +10,24 @@ describe('index.ts test cases', () => {
 
   it.each([
     {
-      name: 'Main',
       expected: 'hello main!',
+      name: 'Main',
     },
     {
-      name: 'Queue',
       expected: 'hello queue!',
+      name: 'Queue',
     },
     {
-      name: 'MainQueue',
       expected: 'hello mainqueue!',
+      name: 'MainQueue',
     },
     {
-      name: 'anonymous',
       expected: 'hello anonymous!',
+      name: 'anonymous',
     },
   ])(
     'should return the appropriate welcome message for %p ',
-    ({ name, expected }) => {
+    ({ expected, name }) => {
       const msg = helloBlankTemplate(name);
       expect(msg).toBe(expected);
     },
