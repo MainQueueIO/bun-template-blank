@@ -12,6 +12,8 @@
     "url": "git+https://github.com/MainQueueIO/bun-template-blank.git"
   },
   "scripts": {
+    "build": "bun build src --outdir ./dist",
+    "build:dry-run": "bun build src",
     "husky:prepare": "is-ci || husky",
     "lint": "concurrently --kill-others-on-fail \"bun run lint:oxlinter\" \"bun run lint:tsc\" \"bun run lint:eslinter\" \"bun run lint:format\"",
     "lint:tsc": "bun --bun tsc --noEmit",
