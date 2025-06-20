@@ -1,4 +1,4 @@
-name: "[PR] Semantic Pull Request"
+name: "[PR] Validations on Title & Label"
 on:
   pull_request:
     types:
@@ -32,7 +32,7 @@ jobs:
           wip: true
           validateSingleCommit: true
           scopes: |
-            ci 
+            ci
             config
             deps
             scripts
